@@ -1,0 +1,4 @@
+[
+  { "id": 1, "type": "image", "src": "http://placekitten.com/200/300" },
+  { "id": 2, "type": "text", "text": "Hello world" }
+]
