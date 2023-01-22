@@ -56,10 +56,11 @@ const getComponents = async (): Promise<Component[]> => {
 }
 
 const storeComponent = async (component: Component): Promise<void> => {
-  const json = JSON.parse(await readFile(`${process.cwd()}/database.json`, 'utf8'));
+  const file = path.join(process.cwd(), 'database.json');
+  const json = JSON.parse(await readFile(file, 'utf8'));
   json.push(component);
   //TODO: Check components with same id
-  await writeFile(`${process.cwd()}/database.json`, JSON.stringify(json), 'utf8');
+  await writeFile(file, JSON.stringify(json), 'utf8');
 }
 
 //TODO: add type to file
