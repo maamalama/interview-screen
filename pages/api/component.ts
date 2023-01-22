@@ -4,6 +4,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import { Component } from "../../src/types";
 import { randomUUID } from 'crypto';
 import { IncomingForm } from "formidable";
+import path from 'path';
 
 //TODO: Separate HTTP methods to different functions and use them in handler
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -49,7 +50,8 @@ export const config = {
 };
 
 const getComponents = async (): Promise<Component[]> => {
-  const components = await readFile(`${process.cwd()}/database.json`, 'utf8');
+  const file = path.join(process.cwd(), 'database.json');
+  const components = await readFile(file, 'utf8');
   return JSON.parse(components);
 }
 
